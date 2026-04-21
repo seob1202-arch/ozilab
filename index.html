@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>OZILAB | 비즈니스 전문가 네트워크</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
@@ -14,172 +14,212 @@
             --gray-900: #333333;
             --gray-500: #888888;
             --gray-200: #E5E5E5;
+            --gray-100: #F4F5F7;
             --gray-50: #F8F9FA;
             --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.1);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; word-break: keep-all; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; word-break: keep-all; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--white); color: var(--black); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .highlight { color: var(--primary-red); }
 
-        /* [2] Header (Sticky GNB) */
+        /* [2] Header (Sticky) */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 72px;
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
+            position: fixed; top: 0; left: 0; width: 100%; height: 64px;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 100;
             display: flex; align-items: center; transition: var(--transition);
         }
         header .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-size: 26px; font-weight: 900; letter-spacing: -1px; text-decoration: none; color: var(--black); }
+        .logo { font-size: 22px; font-weight: 900; letter-spacing: -1px; text-decoration: none; color: var(--black); }
         .logo span { color: var(--primary-red); }
         
-        nav { display: flex; gap: 40px; align-items: center; }
-        nav a { text-decoration: none; color: var(--gray-900); font-weight: 600; font-size: 16px; transition: var(--transition); }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { text-decoration: none; color: var(--gray-900); font-weight: 600; font-size: 15px; }
         nav a:hover { color: var(--primary-red); }
 
         /* Buttons */
         .btn { 
             background-color: var(--primary-red); color: var(--white); border: none; 
-            padding: 16px 32px; font-size: 16px; font-weight: 700; border-radius: 8px; 
+            padding: 16px 28px; font-size: 16px; font-weight: 700; border-radius: 12px; 
             cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
         .btn:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,0,0,0.25); }
-        .btn-outline { background: var(--white); color: var(--black); border: 1px solid var(--gray-200); padding: 12px 24px; }
-        .btn-outline:hover { border-color: var(--black); background: var(--gray-50); transform: none; box-shadow: none; }
-        .btn-full { width: 100%; padding: 18px; font-size: 18px; margin-top: 10px;}
+        .btn:active { transform: scale(0.98); }
+        .btn-outline { background: var(--white); color: var(--black); border: 1px solid var(--gray-200); padding: 10px 20px; border-radius: 8px;}
+        .btn-full { width: 100%; padding: 18px; font-size: 17px; margin-top: 8px; border-radius: 14px;}
 
         /* [3] Hero Section */
         .hero { 
-            padding: 180px 0 120px; position: relative; overflow: hidden;
-            background: radial-gradient(circle at 90% 10%, rgba(230,0,0,0.03) 0%, transparent 40%);
+            padding: 140px 0 100px; position: relative;
+            background: radial-gradient(circle at 90% 10%, rgba(230,0,0,0.03) 0%, transparent 50%);
         }
-        .hero .container { display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; z-index: 2; }
-        .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.25; margin-bottom: 24px; letter-spacing: -1.5px; }
-        .hero p { font-size: 1.25rem; color: var(--gray-500); margin-bottom: 48px; max-width: 600px; }
-        
-        .scroll-indicator { display: none; margin-top: 60px; color: var(--gray-500); font-size: 24px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.3; margin-bottom: 24px; letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; color: var(--gray-500); margin-bottom: 40px; max-width: 500px; }
 
-        /* [4] Experts Section (Services Overview) */
-        .experts { padding: 120px 0; background-color: var(--gray-50); }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
+        /* [4] Sections Common */
+        .section-header { margin-bottom: 48px; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
         .section-header p { font-size: 1.1rem; color: var(--gray-500); }
 
-        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        /* Experts Grid */
+        .experts { padding: 100px 0; background-color: var(--gray-50); }
+        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .expert-card {
-            background: var(--white); padding: 40px 32px; border-radius: 16px;
-            border: 1px solid var(--gray-200); transition: var(--transition);
-            position: relative; overflow: hidden;
+            background: var(--white); padding: 36px 28px; border-radius: 20px;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
         }
-        .expert-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary-red); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
-        .expert-card:hover { transform: translateY(-8px); border-color: transparent; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .expert-card:hover::before { transform: scaleX(1); }
-        .expert-icon { font-size: 36px; margin-bottom: 24px; display: inline-block; background: var(--gray-50); padding: 16px; border-radius: 12px; }
-        .expert-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
-        .expert-card p { font-size: 1rem; color: var(--gray-500); }
+        .expert-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .expert-icon { font-size: 32px; margin-bottom: 20px; display: inline-block; background: var(--gray-100); padding: 14px; border-radius: 16px; }
+        .expert-card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+        .expert-card p { font-size: 0.95rem; color: var(--gray-500); }
 
-        /* [5] Team Profiles (Dynamic Headless CMS) */
-        .team-profiles { padding: 120px 0; background-color: var(--white); }
-        .profile-carousel { 
-            display: flex; gap: 24px; overflow-x: auto; padding-bottom: 40px;
-            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-        }
-        .profile-carousel::-webkit-scrollbar { height: 8px; }
-        .profile-carousel::-webkit-scrollbar-track { background: var(--gray-50); border-radius: 10px; }
-        .profile-carousel::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 10px; }
-        .profile-carousel::-webkit-scrollbar-thumb:hover { background: var(--gray-500); }
-
+        /* Team Profiles */
+        .team-profiles { padding: 100px 0; background-color: var(--white); }
+        .profile-carousel { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 32px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .profile-carousel::-webkit-scrollbar { display: none; }
+        
         .profile-card {
-            min-width: 300px; flex-shrink: 0; scroll-snap-align: start;
-            border: 1px solid var(--gray-200); border-radius: 20px; padding: 32px 24px;
-            background: var(--white); transition: var(--transition);
+            min-width: 320px; flex-shrink: 0; scroll-snap-align: start;
+            border: 1px solid var(--gray-200); border-radius: 24px; padding: 32px 24px; background: var(--white);
         }
-        .profile-card:hover { border-color: var(--primary-red); box-shadow: 0 16px 32px rgba(230,0,0,0.06); transform: translateY(-4px); }
-        
         .profile-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-        .profile-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gray-50); background-color: var(--gray-200); }
-        .profile-title .tag { display: inline-block; padding: 4px 10px; background: #FFF0F0; color: var(--primary-red); font-size: 0.8rem; font-weight: 700; border-radius: 50px; margin-bottom: 6px; }
-        .profile-title h3 { font-size: 1.25rem; font-weight: 800; color: var(--black); }
-        
-        .profile-info h4 { font-size: 0.9rem; color: var(--gray-900); font-weight: 700; margin-top: 16px; margin-bottom: 8px; border-bottom: 1px solid var(--gray-200); padding-bottom: 4px; }
+        .profile-img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; background-color: var(--gray-100); }
+        .profile-title .tag { display: inline-block; padding: 4px 10px; background: #FFF0F0; color: var(--primary-red); font-size: 0.75rem; font-weight: 700; border-radius: 50px; margin-bottom: 4px; }
+        .profile-title h3 { font-size: 1.2rem; font-weight: 800; }
+        .profile-info h4 { font-size: 0.9rem; color: var(--gray-900); font-weight: 700; margin-top: 16px; margin-bottom: 8px; border-bottom: 1px solid var(--gray-100); padding-bottom: 4px; }
         .profile-info ul { list-style: none; padding: 0; }
-        .profile-info li { font-size: 0.95rem; color: var(--gray-500); margin-bottom: 6px; position: relative; padding-left: 12px; }
+        .profile-info li { font-size: 0.9rem; color: var(--gray-500); margin-bottom: 6px; position: relative; padding-left: 12px; }
         .profile-info li::before { content: '•'; position: absolute; left: 0; color: var(--primary-red); }
 
-        /* Mobile Sticky Bottom CTA */
-        .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; width: 100%; padding: 16px 24px; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-top: 1px solid var(--gray-200); z-index: 99; }
-
-        /* [6] Multi-step Modal & Form */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.4); backdrop-filter: blur(4px); z-index: 1000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
-        .modal-overlay.show { display: flex; opacity: 1; }
-        .modal-content { width: 900px; max-width: 95vw; background: var(--white); border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,0.2); display: flex; overflow: hidden; transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .modal-overlay.show .modal-content { transform: translateY(0); }
-        .modal-form-area { width: 60%; padding: 48px; position: relative; }
-        .modal-info-area { width: 40%; background: var(--gray-50); padding: 48px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--gray-200); }
-        .modal-info-area h4 { font-size: 1.5rem; margin-bottom: 16px; font-weight: 700; }
-        .modal-info-area p { color: var(--gray-500); font-size: 1rem; margin-bottom: 24px; }
-        .modal-info-area .testimonial { background: var(--white); padding: 24px; border-radius: 12px; border: 1px solid var(--gray-200); font-style: italic; font-size: 0.95rem; }
+        /* [5] Mobile UI Specifics (The Core Improvements) */
+        .mobile-sticky-cta { display: none; }
         
-        .close-btn { position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 28px; color: var(--gray-500); cursor: pointer; transition: 0.2s; z-index: 10; }
-        .close-btn:hover { color: var(--black); transform: rotate(90deg); }
-        
-        .progress-wrapper { height: 4px; background: var(--gray-200); border-radius: 2px; margin-bottom: 40px; overflow: hidden; }
-        .progress-bar { height: 100%; background: var(--primary-red); width: 0%; transition: width 0.4s ease; }
-        
-        .form-step { display: none; animation: fadeIn 0.4s ease; }
-        .form-step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-        
-        .step-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .step-desc { font-size: 1rem; color: var(--gray-500); margin-bottom: 32px; }
-        
-        .chip-group { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
-        .chip { padding: 14px 24px; border: 1px solid var(--gray-200); border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--gray-900); transition: var(--transition); }
-        .chip:hover { border-color: var(--gray-500); }
-        .chip.selected { background: var(--black); color: var(--white); border-color: var(--black); }
-        
-        .radio-card { display: flex; align-items: center; padding: 20px; border: 1px solid var(--gray-200); border-radius: 12px; margin-bottom: 16px; cursor: pointer; transition: var(--transition); font-weight: 600; }
-        .radio-card:hover { border-color: var(--primary-red); background: #FFF9F9; }
-        .radio-card input { margin-right: 16px; width: 20px; height: 20px; accent-color: var(--primary-red); }
-        
-        textarea, input[type="text"] { width: 100%; padding: 20px; border: 1px solid var(--gray-200); background: var(--gray-50); border-radius: 12px; margin-bottom: 20px; font-size: 1rem; transition: var(--transition); }
-        textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--primary-red); background: var(--white); box-shadow: 0 0 0 4px rgba(230,0,0,0.05); }
-        
-        .nav-buttons { display: flex; gap: 12px; margin-top: 20px; }
-        .nav-buttons .btn { flex: 1; }
-        
-        .loading-container { text-align: center; padding: 60px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
-        .loader { width: 64px; height: 64px; border: 4px solid var(--gray-200); border-top-color: var(--primary-red); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        #loadingMsg { font-size: 1.25rem; font-weight: 700; color: var(--black); line-height: 1.5; }
-
-        /* [7] Responsive Specifics (Mobile Optimization) */
         @media (max-width: 900px) {
             header nav { display: none; }
-            .hero { padding: 140px 0 80px; }
-            .hero .container { align-items: center; text-align: center; }
-            .hero h1 { font-size: 2.75rem; }
-            .scroll-indicator { display: block; }
+            .hero { padding: 120px 0 60px; text-align: center; }
+            .hero h1 { font-size: 2.6rem; word-break: keep-all; }
+            .hero p { margin: 0 auto 32px; font-size: 1.1rem; }
             
-            .expert-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 32px; -webkit-overflow-scrolling: touch; margin: 0 -24px; padding: 0 24px 32px; }
+            .section-header { text-align: left; margin-bottom: 32px; }
+            .section-header h2 { font-size: 1.8rem; }
+
+            /* Affordance: Let the next card peek out */
+            .experts, .team-profiles { padding: 60px 0; overflow: hidden; }
+            .expert-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 24px 20px; margin: 0 -24px; gap: 16px; scrollbar-width: none; }
             .expert-grid::-webkit-scrollbar { display: none; }
-            .expert-card { min-width: 85vw; scroll-snap-align: center; flex-shrink: 0; }
+            .expert-card { min-width: 82vw; scroll-snap-align: center; margin: 0; }
+            
+            .profile-carousel { padding: 0 24px 20px; margin: 0 -24px; gap: 16px; }
+            .profile-card { min-width: 82vw; }
 
-            .profile-carousel { margin: 0 -24px; padding: 0 24px 40px; }
-            .profile-card { min-width: 85vw; }
-
-            .mobile-sticky-cta { display: block; }
-
-            /* Mobile Bottom Sheet UI */
-            .modal-content { flex-direction: column; width: 100%; max-width: 100%; margin-top: auto; border-radius: 24px 24px 0 0; height: 85vh; transform: translateY(100%); }
-            .modal-overlay.show .modal-content { transform: translateY(0); }
-            .modal-info-area { display: none; }
-            .modal-form-area { width: 100%; padding: 32px 24px; overflow-y: auto; height: 100%; }
-            .close-btn { top: 16px; right: 16px; }
+            /* Advanced Sticky Bottom CTA with Gradient Fade */
+            .mobile-sticky-cta { 
+                display: block; position: fixed; bottom: 0; left: 0; width: 100%; 
+                padding: 40px 20px 20px; 
+                background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 100%);
+                z-index: 90; pointer-events: none;
+            }
+            .mobile-sticky-cta .btn { pointer-events: auto; box-shadow: 0 10px 20px rgba(230,0,0,0.2); }
+            body { padding-bottom: 100px; /* Prevent footer content hiding */ }
         }
+
+        /* [6] App-like Bottom Sheet Modal */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            z-index: 1000; display: none; justify-content: center; align-items: center; 
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.show { display: flex; opacity: 1; }
+
+        .modal-content { 
+            width: 900px; max-width: 95vw; background: var(--white); border-radius: 24px; 
+            box-shadow: var(--shadow-lg); display: flex; overflow: hidden;
+            transform: translateY(20px); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
+
+        .modal-form-area { width: 60%; padding: 48px; position: relative; background: var(--white); }
+        .modal-info-area { width: 40%; background: var(--gray-50); padding: 48px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--gray-100); }
+        .modal-info-area h4 { font-size: 1.5rem; margin-bottom: 16px; font-weight: 800; }
+        .modal-info-area p { color: var(--gray-500); font-size: 1rem; margin-bottom: 24px; }
+        
+        .close-btn { position: absolute; top: 20px; right: 20px; background: var(--gray-100); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; color: var(--gray-900); cursor: pointer; transition: 0.2s; z-index: 10; display: flex; justify-content: center; align-items: center;}
+        .close-btn:hover { background: var(--gray-200); }
+
+        /* Progress */
+        .progress-wrapper { height: 4px; background: var(--gray-100); border-radius: 4px; margin-bottom: 32px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary-red); width: 0%; transition: width 0.4s ease; border-radius: 4px;}
+
+        .form-step { display: none; animation: slideIn 0.4s ease; }
+        .form-step.active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+        .step-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .step-desc { font-size: 1rem; color: var(--gray-500); margin-bottom: 28px; }
+
+        /* Touch-friendly Form Elements */
+        .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+        .chip { 
+            padding: 14px 20px; border: 1px solid var(--gray-200); border-radius: 50px; 
+            cursor: pointer; font-size: 0.95rem; font-weight: 600; color: var(--gray-900); transition: var(--transition); 
+            background: var(--white); -webkit-tap-highlight-color: transparent;
+        }
+        .chip:active { transform: scale(0.95); }
+        .chip.selected { background: var(--black); color: var(--white); border-color: var(--black); }
+
+        .radio-card { 
+            display: flex; align-items: center; padding: 20px; border: 1px solid var(--gray-200); 
+            border-radius: 16px; margin-bottom: 12px; cursor: pointer; transition: var(--transition); font-weight: 600;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .radio-card:active { transform: scale(0.98); }
+        .radio-card.selected, .radio-card:has(input:checked) { border-color: var(--primary-red); background: #FFF9F9; }
+        .radio-card input { margin-right: 16px; width: 22px; height: 22px; accent-color: var(--primary-red); }
+
+        /* Fix iOS Zoom */
+        textarea, input[type="text"] { 
+            width: 100%; padding: 18px 20px; border: 1px solid var(--gray-200); background: var(--gray-50);
+            border-radius: 14px; margin-bottom: 16px; font-size: 16px; /* Must be 16px for iOS */
+            transition: var(--transition); appearance: none;
+        }
+        textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--primary-red); background: var(--white); box-shadow: 0 0 0 3px rgba(230,0,0,0.1); }
+
+        .nav-buttons { display: flex; gap: 12px; margin-top: 24px; }
+        .nav-buttons .btn { flex: 1; }
+
+        /* Mobile Bottom Sheet Specifics */
+        @media (max-width: 900px) {
+            .modal-content { 
+                flex-direction: column; width: 100%; max-width: 100%; margin-top: auto; 
+                border-radius: 32px 32px 0 0; /* Extremely rounded top corners */
+                height: 90vh; /* Taller for better keyboard handling */
+                transform: translateY(100%);
+            }
+            /* Drag Handle Indicator */
+            .modal-content::before {
+                content: ''; display: block; width: 40px; height: 5px; background: var(--gray-200);
+                border-radius: 5px; margin: 16px auto 0;
+            }
+            .modal-info-area { display: none; }
+            .modal-form-area { width: 100%; padding: 24px 24px 40px; overflow-y: auto; height: 100%; }
+            .close-btn { top: 16px; right: 20px; width: 36px; height: 36px; font-size: 20px; background: transparent;}
+            
+            .step-title { font-size: 1.4rem; }
+            .step-desc { font-size: 0.95rem; }
+            .chip { padding: 12px 18px; font-size: 0.9rem; }
+        }
+
+        /* Loading UI */
+        .loading-container { text-align: center; padding: 40px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        .loader { width: 56px; height: 56px; border: 4px solid var(--gray-100); border-top-color: var(--primary-red); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        #loadingMsg { font-size: 1.1rem; font-weight: 700; color: var(--black); line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -198,57 +238,42 @@
     <section class="hero">
         <div class="container">
             <h1>당신의 비즈니스에 진심으로 참견할<br><span class="highlight">'오지랖 넓은'</span> 전문가들.</h1>
-            <p>법률부터 개발, 마케팅까지. 7개 분야 탑티어 전문가들이 내 일처럼 나서서 당신의 성장을 돕습니다. 지금 고민을 남겨주시면 가장 완벽한 해결책을 찾아갑니다.</p>
-            <button class="btn" style="font-size: 1.1rem; padding: 18px 40px;" onclick="openModal()">내 비즈니스 고민 해결하기 &rarr;</button>
-            <div class="scroll-indicator">&darr;</div>
+            <p>법률부터 개발, 마케팅까지. 7개 분야 탑티어 전문가들이 내 일처럼 나서서 당신의 성장을 돕습니다.</p>
+            <button class="btn" style="padding: 18px 40px; border-radius: 50px;" onclick="openModal()">내 고민 해결 시작하기 &rarr;</button>
         </div>
     </section>
-
-    <div class="mobile-sticky-cta">
-        <button class="btn btn-full" onclick="openModal()">지금 바로 무료 진단받기</button>
-    </div>
 
     <section class="experts" id="experts">
         <div class="container">
             <div class="section-header">
                 <h2>하나의 고민, 일곱 개의 시선</h2>
-                <p>단편적인 자문을 넘어, 근본적인 리스크를 찾아내는 오지랩 생태계</p>
+                <p>단편적인 자문을 넘어 근본적인 리스크를 찾아냅니다.</p>
             </div>
             <div class="expert-grid">
                 <div class="expert-card">
                     <span class="expert-icon">📊</span>
                     <h3>경영 컨설팅</h3>
-                    <p>비즈니스 모델 진단부터 투자 유치 전략까지, 기업의 생존과 성장을 위한 지도를 그립니다.</p>
+                    <p>비즈니스 모델 진단부터 투자 유치 전략까지 생존 지도를 그립니다.</p>
                 </div>
                 <div class="expert-card">
                     <span class="expert-icon">⚖️</span>
                     <h3>법률 (변호사)</h3>
-                    <p>계약서 검토부터 규제 대응까지, 발생 가능한 모든 법적 리스크를 선제적으로 방어합니다.</p>
+                    <p>계약서 검토부터 규제 대응까지 모든 법적 리스크를 선제 방어합니다.</p>
                 </div>
                 <div class="expert-card">
                     <span class="expert-icon">💰</span>
                     <h3>세무/회계</h3>
-                    <p>복잡한 세무 이슈와 자금 흐름을 투명하게 관리하여 기업의 재무 건강을 책임집니다.</p>
+                    <p>복잡한 세무 이슈와 자금 흐름을 투명하게 관리해 재무를 책임집니다.</p>
                 </div>
                 <div class="expert-card">
                     <span class="expert-icon">🛡️</span>
                     <h3>지식재산권</h3>
-                    <p>특허, 상표권 등 당신의 소중한 아이디어와 기술이 온전한 자산이 되도록 보호합니다.</p>
-                </div>
-                <div class="expert-card">
-                    <span class="expert-icon">🎨</span>
-                    <h3>UI/UX 디자인</h3>
-                    <p>단순한 심미성을 넘어, 사용자의 전환을 이끌어내는 데이터 기반의 경험을 설계합니다.</p>
+                    <p>특허, 상표권 등 당신의 아이디어와 기술이 자산이 되도록 보호합니다.</p>
                 </div>
                 <div class="expert-card">
                     <span class="expert-icon">💻</span>
-                    <h3>IT 개발</h3>
-                    <p>안정적인 아키텍처와 확장성 있는 코드로 비즈니스 아이디어를 현실의 서비스로 구현합니다.</p>
-                </div>
-                <div class="expert-card">
-                    <span class="expert-icon">🚀</span>
-                    <h3>마케팅 (CRM)</h3>
-                    <p>데이터 분석을 통해 진성 고객을 찾고, 지속 가능한 성장 엔진을 구축합니다.</p>
+                    <h3>IT 기획/개발</h3>
+                    <p>안정적인 아키텍처로 아이디어를 현실의 서비스로 구현합니다.</p>
                 </div>
             </div>
         </div>
@@ -258,14 +283,17 @@
         <div class="container">
             <div class="section-header">
                 <h2>당신의 비즈니스에 참견할 사람들</h2>
-                <p>단순한 자문을 넘어, 실행을 책임지는 탑티어 파트너 그룹입니다.</p>
+                <p>실행을 책임지는 탑티어 파트너 그룹입니다.</p>
             </div>
-            
             <div class="profile-carousel" id="profileCarousel">
                 <p style="text-align:center; width:100%; padding:40px; color:var(--gray-500);">전문가 데이터를 불러오는 중입니다...</p>
             </div>
         </div>
     </section>
+
+    <div class="mobile-sticky-cta">
+        <button class="btn btn-full" onclick="openModal()">지금 바로 무료 진단받기</button>
+    </div>
 
     <div class="modal-overlay" id="inquiryModal">
         <div class="modal-content">
@@ -288,29 +316,29 @@
                         <div class="chip" onclick="toggleChip(this)">마케팅 (CRM)</div>
                         <div class="chip" onclick="toggleChip(this)">잘 모르겠음 / 종합 진단</div>
                     </div>
-                    <button class="btn btn-full" onclick="nextStep(1)">다음으로</button>
+                    <button class="btn btn-full" onclick="nextStep(1)">다음 단계로</button>
                 </div>
 
                 <div class="form-step" id="step2">
                     <div class="step-title">현재 비즈니스는 어떤 단계인가요?</div>
-                    <div class="step-desc">전문가가 상황을 정확히 진단하는 데 필요합니다.</div>
-                    <label class="radio-card"><input type="radio" name="stage" value="아이디어/창업준비"> 아이디어 검증 및 창업 준비 단계</label>
-                    <label class="radio-card"><input type="radio" name="stage" value="런칭/초기성장"> 서비스 런칭 및 초기 성장 단계</label>
-                    <label class="radio-card"><input type="radio" name="stage" value="스케일업/투자유치"> 본격적인 스케일업 및 투자 유치 단계</label>
-                    <label class="radio-card"><input type="radio" name="stage" value="안정화/신사업"> 안정화 및 신사업 확장 단계</label>
+                    <div class="step-desc">상황을 정확히 진단하는 데 큰 도움이 됩니다.</div>
+                    <label class="radio-card"><input type="radio" name="stage" value="아이디어/창업준비"> 아이디어 검증 및 창업 준비</label>
+                    <label class="radio-card"><input type="radio" name="stage" value="런칭/초기성장"> 서비스 런칭 및 초기 성장</label>
+                    <label class="radio-card"><input type="radio" name="stage" value="스케일업/투자유치"> 스케일업 및 투자 유치</label>
+                    <label class="radio-card"><input type="radio" name="stage" value="안정화/신사업"> 안정화 및 신사업 확장</label>
                     <div class="nav-buttons">
                         <button class="btn btn-outline" onclick="prevStep(2)">이전</button>
-                        <button class="btn" onclick="nextStep(2)">다음으로</button>
+                        <button class="btn" onclick="nextStep(2)">다음</button>
                     </div>
                 </div>
 
                 <div class="form-step" id="step3">
                     <div class="step-title">어떤 점이 가장 고민이신가요?</div>
-                    <div class="step-desc">전문가가 미리 알아두면 좋은 상황을 자유롭게 적어주세요.</div>
-                    <textarea id="detailText" rows="6" placeholder="예) 앱 런칭을 앞두고 있는데, 사용자 데이터 수집과 관련한 개인정보보호법이 고민입니다."></textarea>
+                    <div class="step-desc">전문가가 미리 알아두면 좋은 상황을 적어주세요.</div>
+                    <textarea id="detailText" rows="5" placeholder="예) 앱 런칭을 앞두고 있는데, 사용자 데이터 수집과 관련한 개인정보보호법이 고민입니다."></textarea>
                     <div class="nav-buttons">
                         <button class="btn btn-outline" onclick="prevStep(3)">이전</button>
-                        <button class="btn" onclick="nextStep(3)">다음으로</button>
+                        <button class="btn" onclick="nextStep(3)">다음</button>
                     </div>
                 </div>
 
@@ -335,10 +363,7 @@
 
             <div class="modal-info-area" id="infoArea">
                 <h4>단 1분의 기록이<br>비즈니스의 방향을 바꿉니다.</h4>
-                <p>OZILAB의 매칭 시스템은 고객님의 문제를 다각도로 분석하여 가장 최적화된 태스크포스(TF) 팀을 구성해 드립니다.</p>
-                <div class="testimonial">
-                    "개발 외주를 맡겼을 뿐인데, 비즈니스 모델의 법적 리스크까지 체크해 주더군요. 이게 진짜 파트너죠."<br><br><b>- A 스타트업 대표</b>
-                </div>
+                <p>OZILAB의 매칭 시스템은 고객님의 문제를 다각도로 분석하여 최적의 태스크포스(TF) 팀을 구성해 드립니다.</p>
             </div>
         </div>
     </div>
@@ -347,9 +372,7 @@
         // ★★★ 여기에 본인의 Google Apps Script 배포 URL을 입력하세요 ★★★
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz05KcZJVd8nPI-4oA7wSi7WfVrQdUa5OZxf8YhmGuNe6lZjworOrg6Ab-Kq1QdOjZwA/exec';
 
-        /* -----------------------------------------------------------
-           1. Dynamic Profile Loading (GET from Google Sheets)
-        ----------------------------------------------------------- */
+        /* 1. Dynamic Profile Loading */
         document.addEventListener('DOMContentLoaded', loadProfiles);
 
         function loadProfiles() {
@@ -362,14 +385,12 @@
                     carousel.innerHTML = ''; 
                     
                     data.forEach(profile => {
-                        // 구글 드라이브 링크 자동 변환 로직
                         let finalImgUrl = profile.imgUrl || 'https://via.placeholder.com/150';
                         if (finalImgUrl.includes('drive.google.com')) {
                             const fileId = finalImgUrl.split('/d/')[1]?.split('/')[0];
                             if (fileId) finalImgUrl = `https://drive.google.com/uc?export=view&id=${fileId}`;
                         }
 
-                        // 줄바꿈(\n)을 <li> 태그로 변환
                         const formatList = (text) => {
                             if(!text) return '<li>정보 없음</li>';
                             return text.split('\n').filter(t => t.trim() !== '').map(item => `<li>${item}</li>`).join('');
@@ -395,15 +416,12 @@
                         carousel.insertAdjacentHTML('beforeend', cardHTML);
                     });
                 })
-                .catch(error => {
-                    console.error('프로필 로드 에러:', error);
+                .catch(() => {
                     carousel.innerHTML = '<p style="text-align:center; width:100%; color:#E60000;">프로필 정보를 불러오지 못했습니다.</p>';
                 });
         }
 
-        /* -----------------------------------------------------------
-           2. Multi-step Modal Logic & Form Submission
-        ----------------------------------------------------------- */
+        /* 2. Modal Logic */
         const totalSteps = 4;
         let formData = { categories: [], businessStage: '', details: '', name: '', contact: '' };
 
@@ -421,10 +439,17 @@
 
         function toggleChip(element) { element.classList.toggle('selected'); }
 
+        // Radio button visual sync (for touch feedback)
+        document.querySelectorAll('input[name="stage"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.radio-card').forEach(card => card.classList.remove('selected'));
+                if(this.checked) this.parentElement.classList.add('selected');
+            });
+        });
+
         function updateProgress(step) { document.getElementById('progressBar').style.width = `${(step / totalSteps) * 100}%`; }
         
         function nextStep(current) {
-            // Validation per step
             if(current === 1) {
                 const selected = document.querySelectorAll('.chip.selected');
                 if(selected.length === 0) { alert('최소 1개의 분야를 선택해주세요.'); return; }
@@ -437,7 +462,6 @@
             }
             if(current === 3) formData.details = document.getElementById('detailText').value;
 
-            // UI Update
             document.getElementById(`step${current}`).classList.remove('active');
             document.getElementById(`step${current + 1}`).classList.add('active');
             updateProgress(current);
@@ -454,13 +478,9 @@
             const contact = document.getElementById('contactInfo').value;
             if(!name || !contact) { alert('이름과 연락처를 입력해주세요.'); return; }
             
-            formData.name = name; 
-            formData.contact = contact;
-            
-            // Prepare payload
+            formData.name = name; formData.contact = contact;
             const payload = { ...formData, categories: formData.categories.join(', ') };
 
-            // Start Labor Illusion UX
             document.getElementById('step4').classList.remove('active');
             document.getElementById('progressWrapper').style.display = 'none';
             document.getElementById('loadingStep').classList.add('active');
@@ -470,7 +490,6 @@
 
             setTimeout(() => { loadingMsg.innerText = `가장 적합한 [${categoryText}] 전문가에게 알람을 발송하고 있습니다...`; }, 1500);
 
-            // POST to Google Sheets
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -479,12 +498,7 @@
                     document.getElementById('spinner').style.display = 'none';
                     loadingMsg.style.color = 'var(--primary-red)';
                     loadingMsg.innerHTML = `<span style="font-size:3rem;display:block;margin-bottom:16px;">✅</span><b>매칭 완료!</b><br><br><span style="color:var(--gray-500);font-size:1rem;font-weight:400;">성공적으로 접수되었습니다.<br>24시간 내에 담당 전문가가 직접 연락드리겠습니다.</span>`;
-                    
-                    // Reset form and close after delay
-                    setTimeout(() => {
-                        closeModal();
-                        setTimeout(() => location.reload(), 500); // Reload to reset form state
-                    }, 4000); 
+                    setTimeout(() => { closeModal(); setTimeout(() => location.reload(), 500); }, 3000); 
                 }, 3500); 
             }).catch(() => { loadingMsg.innerText = "오류가 발생했습니다. 잠시 후 다시 시도해주세요."; });
         }
