@@ -335,7 +335,7 @@
                                 <img src="${img}" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
                                 <div class="profile-title"><span class="tag">${p.tag}</span><h3>${p.name}</h3></div>
                             </div>
-                            <div class="profile-info"><h4>Education</h4><ul>${list(p.edu)}</ul><h4>Experience</h4><ul>${list(p.exp)}</ul></div>
+                            <div class="profile-info"><h4>Experience</h4><ul>${list(p.edu)}</ul><h4>Skill</h4><ul>${list(p.exp)}</ul></div>
                         </div>`);
                 });
             }).catch(() => carousel.innerHTML = '<p style="text-align:center; width:100%; color:var(--primary-red); font-weight:600;">데이터를 불러오는 중 문제가 발생했습니다.</p>');
