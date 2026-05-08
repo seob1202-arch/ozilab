@@ -8,117 +8,62 @@
     <style>
         /* 🎨 Top 1% Design System Variables */
         :root {
-            --primary-red: #E60000;
-            --primary-red-hover: #CC0000;
-            --red-light: #FFF0F0;
-            --text-primary: #1D1D1F;
-            --text-secondary: #86868B;
-            --bg-page: #FFFFFF;
-            --bg-secondary: #F5F5F7;
-            --border-color: rgba(0, 0, 0, 0.06);
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-blur: blur(24px);
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
-            --shadow-red: 0 8px 24px rgba(230, 0, 0, 0.15);
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-fast: all 0.2s ease-out;
+            --primary-red: #E60000; --primary-red-hover: #CC0000; --red-light: #FFF0F0;
+            --text-primary: #1D1D1F; --text-secondary: #86868B;
+            --bg-page: #FFFFFF; --bg-secondary: #F5F5F7; --border-color: rgba(0, 0, 0, 0.06);
+            --glass-bg: rgba(255, 255, 255, 0.75); --glass-blur: blur(24px);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03); --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06); --shadow-red: 0 8px 24px rgba(230, 0, 0, 0.15);
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); --transition-fast: all 0.2s ease-out;
         }
 
-        /* Base Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; word-break: keep-all; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard Variable', -apple-system, sans-serif; word-break: keep-all; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--bg-page); color: var(--text-primary); line-height: 1.5; overflow-x: hidden; letter-spacing: -0.015em; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-        /* ✨ Entrance Animation */
         .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* Header (Ultra Glassmorphism) */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-            background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center;
-        }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 60px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; }
         header .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .logo { font-size: 20px; font-weight: 800; text-decoration: none; color: var(--text-primary); letter-spacing: -0.03em; transition: var(--transition-fast); }
-        .logo:hover { opacity: 0.7; }
-        .logo span { color: var(--primary-red); }
+        .logo:hover { opacity: 0.7; } .logo span { color: var(--primary-red); }
 
-        /* Buttons */
-        .btn { 
-            background-color: var(--primary-red); color: white; border: none; 
-            padding: 16px 32px; font-size: 16px; font-weight: 700; border-radius: 30px; 
-            cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; justify-content: center;
-            box-shadow: var(--shadow-red); letter-spacing: -0.01em;
-        }
+        .btn { background-color: var(--primary-red); color: white; border: none; padding: 16px 32px; font-size: 16px; font-weight: 700; border-radius: 30px; cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; justify-content: center; box-shadow: var(--shadow-red); letter-spacing: -0.01em; }
         .btn:hover { background-color: var(--primary-red-hover); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(230, 0, 0, 0.25); }
         .btn:active { transform: scale(0.96) translateY(0); }
         .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 16px; font-size: 13px; border-radius: 20px; font-weight: 600; text-decoration: none; box-shadow: none; transition: var(--transition-fast); }
         .btn-outline:hover { background: var(--bg-secondary); border-color: transparent; }
         .btn-full { width: 100%; border-radius: 20px; padding: 18px; font-size: 17px; }
 
-        /* Hero Section (Premium Spacing & Gradient Mesh) */
-        .hero { 
-            padding: 160px 0 100px; text-align: center; 
-            background: radial-gradient(circle at 50% 0%, rgba(230, 0, 0, 0.03) 0%, transparent 70%);
-        }
+        .hero { padding: 160px 0 100px; text-align: center; background: radial-gradient(circle at 50% 0%, rgba(230, 0, 0, 0.03) 0%, transparent 70%); }
         .hero .ai-question { font-size: 1.25rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 24px; letter-spacing: -0.02em; }
-        .hero h1 { 
-            font-size: 4.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 32px; letter-spacing: -0.04em; 
-            display: flex; flex-direction: column; align-items: center;
-        }
-        /* [수정된 부분] 직계 자식인 .line-1과 .line-2만 block으로 만들어 2줄 유지 */
+        .hero h1 { font-size: 4.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 32px; letter-spacing: -0.04em; display: flex; flex-direction: column; align-items: center; }
         .hero h1 > span { display: block; white-space: nowrap; width: fit-content; }
-        .hero .line-1 { color: var(--text-primary); }
-        .hero .line-2 { color: var(--text-primary); }
-        /* [수정된 부분] 오지랖 텍스트는 inline 속성을 강제하여 줄바꿈 방지 */
         .hero .ozilap-text { color: var(--primary-red); display: inline; } 
         .hero p { font-size: 1.35rem; color: var(--text-secondary); margin-bottom: 50px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 400; }
 
-        /* Section Global */
         .section-header { margin-bottom: 64px; text-align: center; }
         .section-header h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 12px; }
         .section-header p { color: var(--text-secondary); font-size: 1.2rem; font-weight: 500; }
 
-        /* Experts Grid (Card Lift & Soft Shadow) */
         .experts { padding: 120px 0; background-color: var(--bg-secondary); }
         .expert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .expert-card {
-            background: var(--bg-page); padding: 36px 32px; border-radius: 28px;
-            display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: var(--shadow-sm); transition: var(--transition-smooth);
-        }
+        .expert-card { background: var(--bg-page); padding: 36px 32px; border-radius: 28px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--shadow-sm); transition: var(--transition-smooth); }
         .expert-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: rgba(230,0,0,0.1); }
-        .expert-icon { 
-            width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; 
-            background: var(--red-light); border-radius: 18px; font-size: 28px; color: var(--primary-red); 
-            transition: var(--transition-smooth);
-        }
+        .expert-icon { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; background: var(--red-light); border-radius: 18px; font-size: 28px; color: var(--primary-red); transition: var(--transition-smooth); }
         .expert-card:hover .expert-icon { transform: scale(1.1); background: var(--primary-red); color: white; }
         .expert-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
         .expert-info p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Team Profiles (Refined Scrollbar) */
         .team-profiles { padding: 120px 0; }
-        .profile-carousel { 
-            display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; 
-            scroll-snap-type: x mandatory; 
-        }
-        /* Custom Minimal Scrollbar */
+        .profile-carousel { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; scroll-snap-type: x mandatory; }
         .profile-carousel::-webkit-scrollbar { height: 6px; }
         .profile-carousel::-webkit-scrollbar-track { background: transparent; }
         .profile-carousel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
         .profile-carousel::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
         
-        .profile-card { 
-            min-width: 320px; flex-shrink: 0; scroll-snap-align: start; 
-            background: var(--bg-page); border: 1px solid var(--border-color); border-radius: 32px; padding: 40px 32px; 
-            transition: var(--transition-smooth); box-shadow: var(--shadow-sm);
-        }
+        .profile-card { min-width: 320px; flex-shrink: 0; scroll-snap-align: start; background: var(--bg-page); border: 1px solid var(--border-color); border-radius: 32px; padding: 40px 32px; transition: var(--transition-smooth); box-shadow: var(--shadow-sm); }
         .profile-card:hover { border-color: rgba(230,0,0,0.2); box-shadow: var(--shadow-md); }
         .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
         .profile-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--bg-secondary); border: 2px solid var(--bg-page); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
@@ -128,33 +73,21 @@
         .profile-info li { font-size: 0.95rem; color: var(--text-secondary); list-style: none; margin-bottom: 6px; position: relative; padding-left: 12px; }
         .profile-info li::before { content: '·'; position: absolute; left: 0; color: var(--primary-red); font-weight: bold; }
 
-        /* Mobile Sticky CTA */
         .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px 24px 40px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 100%); z-index: 900; }
 
-        /* Responsive Mobile Mastery */
         @media (max-width: 900px) {
             .hero { padding: 120px 0 60px; }
-            .hero .ai-question { font-size: 1.1rem; margin-bottom: 20px; }
-            .hero h1 { font-size: 9.2vw; margin-bottom: 24px; } /* 완벽한 2줄 유지 */
+            .hero h1 { font-size: 9.2vw; margin-bottom: 24px; }
             .hero p { font-size: 1.2rem; white-space: normal; padding: 0 16px; }
-            
-            .section-header { margin-bottom: 40px; }
-            .section-header h2 { font-size: 2.3rem; }
-            
-            .experts { padding: 80px 0; }
             .expert-grid { grid-template-columns: 1fr; gap: 16px; }
             .expert-card { flex-direction: row; align-items: center; padding: 24px; border-radius: 24px; }
             .expert-icon { width: 52px; height: 52px; font-size: 24px; margin-right: 16px; flex-shrink: 0; border-radius: 14px;}
-            
-            .team-profiles { padding: 80px 0; }
-            .profile-carousel { padding-bottom: 24px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; gap: 16px; }
             .profile-card { min-width: 85vw; padding: 32px 24px; border-radius: 24px; }
-            
             .mobile-sticky-cta { display: block; }
             body { padding-bottom: 110px; }
         }
 
-        /* Top 1% Bottom Sheet Modal UI */
+        /* Modals */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); z-index: 2000; display: none; justify-content: center; align-items: flex-end; opacity: 0; transition: opacity 0.4s ease; }
         .modal-overlay.show { display: flex; opacity: 1; }
         .modal-content { width: 100%; max-width: 640px; background: var(--bg-page); border-radius: 36px 36px 0 0; display: flex; flex-direction: column; transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); height: 90vh; box-shadow: 0 -10px 40px rgba(0,0,0,0.1); }
@@ -175,11 +108,10 @@
         .step-desc { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.5; font-weight: 500; }
         .step-desc .point { color: var(--primary-red); font-weight: 700; display: block; margin-top: 6px; }
         
-        /* Premium Form Controls */
+        /* Form Controls */
         .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
         .chip { padding: 16px 24px; border: 2px solid var(--bg-secondary); border-radius: 24px; cursor: pointer; font-size: 1rem; font-weight: 600; background: var(--bg-page); color: var(--text-primary); transition: var(--transition-fast); user-select: none; }
         .chip:hover { border-color: rgba(230,0,0,0.3); }
-        .chip:active { transform: scale(0.95); }
         .chip.selected { background: var(--primary-red); color: white; border-color: var(--primary-red); box-shadow: var(--shadow-red); }
         
         .radio-card { display: flex; align-items: center; padding: 22px 24px; border: 2px solid var(--bg-secondary); border-radius: 20px; margin-bottom: 16px; cursor: pointer; font-weight: 600; background: var(--bg-page); font-size: 1.05rem; transition: var(--transition-fast); }
@@ -188,7 +120,6 @@
         .radio-card input { margin-right: 16px; width: 24px; height: 24px; accent-color: var(--primary-red); cursor: pointer; }
         
         textarea, input[type="text"] { width: 100%; padding: 20px 24px; border: 2px solid var(--bg-secondary); background: var(--bg-secondary); border-radius: 20px; margin-bottom: 20px; font-size: 1.05rem; outline: none; transition: var(--transition-fast); font-weight: 500; color: var(--text-primary); }
-        textarea::placeholder, input[type="text"]::placeholder { color: #A1A1A6; }
         textarea:focus, input[type="text"]:focus { border-color: var(--primary-red); background: var(--bg-page); box-shadow: 0 0 0 4px var(--red-light); }
         
         .nav-buttons { display: flex; gap: 16px; margin-top: 32px; }
@@ -196,7 +127,6 @@
         .nav-buttons .btn-prev { flex: 1; background: var(--bg-secondary); color: var(--text-primary); border: none; border-radius: 24px; font-weight: 700; cursor: pointer; transition: var(--transition-fast); font-size: 1.1rem; }
         .nav-buttons .btn-prev:hover { background: #E5E5EA; }
 
-        /* Loading Spinner Animation */
         .spinner { width: 48px; height: 48px; border: 4px solid var(--red-light); border-top: 4px solid var(--primary-red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 24px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -206,7 +136,10 @@
     <header>
         <div class="container">
             <a href="#" class="logo">OZI<span>LAB</span></a>
-            <nav><a href="#experts" class="btn-outline">전문가 풀</a></nav>
+            <nav style="display:flex; gap:10px;">
+                <a href="#experts" class="btn-outline">전문가 풀</a>
+                <button class="btn-outline" style="border-color: var(--primary-red); color: var(--primary-red);" onclick="openPartnerModal()">파트너 합류</button>
+            </nav>
         </div>
     </header>
 
@@ -310,11 +243,66 @@
         </div>
     </div>
 
-    <script>
-        // ★ 백엔드(Code.gs) 배포 URL 입력 필수 ★
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz05KcZJVd8nPI-4oA7wSi7WfVrQdUa5OZxf8YhmGuNe6lZjworOrg6Ab-Kq1QdOjZwA/exec';
+    <div class="modal-overlay" id="partnerModal">
+        <div class="modal-content">
+            <div class="modal-form-area">
+                <button class="close-btn" onclick="closePartnerModal()">✕</button>
+                
+                <div class="form-step active" id="partnerStep1">
+                    <h3 class="step-title">전문가 파트너 합류하기</h3>
+                    
+                    <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; margin-bottom: 32px;">
+                        <h4 style="color: var(--primary-red); font-size: 1.1rem; margin-bottom: 12px; font-weight: 800;">🚀 OZILAB 파트너가 되면?</h4>
+                        <ul style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px; margin-bottom: 16px;">
+                            <li><strong>고부가가치 매칭:</strong> 알고리즘이 해결 못하는 진짜 비즈니스 의뢰가 연결됩니다.</li>
+                            <li><strong>쉬운 프로세스:</strong> 고객이 내 분야에 문의를 남기면 즉시 이메일로 알림을 받습니다.</li>
+                            <li><strong>퍼스널 브랜딩:</strong> 오지랩 메인 페이지에 탑티어 리더로서 프로필이 노출됩니다.</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.1);">
+                            💡 <span style="color:var(--primary-red);">안내:</span> 양식을 제출하시면 관리자 확인(시트 승인) 후 최종적으로 페이지에 노출됩니다.
+                        </p>
+                    </div>
 
-        // 1. 프로필 데이터 로드
+                    <div class="step-desc">본인의 전문 분야와 프로필 정보를 입력해 주세요.</div>
+                    
+                    <div id="upload_box" style="border: 2px dashed var(--border-color); padding: 24px; text-align: center; border-radius: 16px; margin-bottom: 20px; cursor: pointer; transition: var(--transition-fast);" onclick="document.getElementById('p_file').click()">
+                        <p style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">프로필 이미지 첨부</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
+                            💡 사이트의 톤앤매너 통일을 위해 가급적 <strong>(블랙&화이트) 컨셉의 사진</strong>을 업로드해 주세요.
+                        </p>
+                        
+                        <input type="file" id="p_file" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                        <label class="btn-outline" style="display: inline-block; cursor: pointer; padding: 10px 20px; background: var(--bg-secondary); border:none; pointer-events: none;">📷 내 PC에서 사진 선택</label>
+                        
+                        <div id="img_preview_container" style="display: none; margin-top: 20px;">
+                            <img id="img_preview" src="" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-red); box-shadow: var(--shadow-sm);">
+                            <p id="file_name_display" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;"></p>
+                        </div>
+                    </div>
+
+                    <input type="text" id="p_category" placeholder="전문 분야 (예: 경영 컨설팅, IT 개발 등)">
+                    <input type="text" id="p_name" placeholder="이름 또는 닉네임">
+                    <input type="text" id="p_email" placeholder="알림을 수신할 이메일 주소">
+                    <textarea id="p_edu" rows="3" placeholder="주요 학력 및 자격 (줄바꿈으로 구분)"></textarea>
+                    <textarea id="p_exp" rows="3" placeholder="핵심 경력 사항 (줄바꿈으로 구분)"></textarea>
+                    
+                    <button class="btn btn-full" style="margin-top: 12px;" onclick="submitPartnerForm()">등록 신청하기</button>
+                </div>
+
+                <div class="form-step" id="partnerLoadingStep" style="text-align:center; padding:80px 0;">
+                    <div class="spinner"></div>
+                    <div id="partnerLoadingMsg" style="font-weight:800; font-size:1.4rem; color:var(--text-primary);">
+                        이미지를 업로드하고 신청서를 제출 중입니다...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ★ 백엔드(Code.gs) 새 배포 URL 입력 필수 ★
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylACWZeiKgOHDkxbvFEZEtwBvgwJznALgqg8yLPieEYroqdhVPzsn3Wyq-be_Y1J2J/exec';
+
         function loadProfiles() {
             const carousel = document.getElementById('profileCarousel');
             const fetchUrl = GOOGLE_SCRIPT_URL + "?t=" + new Date().getTime();
@@ -324,7 +312,7 @@
                 carousel.innerHTML = '';
                 data.forEach(p => {
                     let img = p.imgUrl || '';
-                    if (img.includes('drive.google.com')) {
+                    if (img.includes('drive.google.com') && !img.includes('export=view')) {
                         const id = img.includes('/d/') ? img.split('/d/')[1].split('/')[0] : img.split('id=')[1].split('&')[0];
                         img = `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
                     }
@@ -342,15 +330,15 @@
         }
         document.addEventListener('DOMContentLoaded', loadProfiles);
 
-        // 2. 모달 및 폼 로직
+        // --- 공통 모달 함수 ---
+        function toggleChip(el) { el.classList.toggle('selected'); }
+        
         function openModal() { document.getElementById('inquiryModal').style.display = 'flex'; setTimeout(() => document.getElementById('inquiryModal').classList.add('show'), 10); document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('inquiryModal').classList.remove('show'); setTimeout(() => document.getElementById('inquiryModal').style.display = 'none', 400); document.body.style.overflow = 'auto'; }
-        function toggleChip(el) { el.classList.toggle('selected'); }
         
         function nextStep(n) {
             if(n===1 && document.querySelectorAll('.chip.selected').length===0) return alert('분야를 1개 이상 선택해주세요.');
             if(n===2 && !document.querySelector('input[name="stage"]:checked')) return alert('비즈니스 단계를 선택해주세요.');
-            
             document.getElementById(`step${n}`).classList.remove('active'); 
             document.getElementById(`step${n+1}`).classList.add('active'); 
             document.getElementById('progressBar').style.width = (n*33.3) + '%'; 
@@ -362,6 +350,7 @@
             document.getElementById('progressBar').style.width = ((n-2)*33.3) + '%'; 
         }
         
+        // --- 고객 문의 접수 ---
         function submitForm() {
             const name = document.getElementById('contactName').value;
             const contact = document.getElementById('contactInfo').value;
@@ -372,6 +361,7 @@
             document.getElementById('progressBar').style.width = '100%';
             
             const payload = { 
+                action: 'client_inquiry',
                 categories: Array.from(document.querySelectorAll('.chip.selected')).map(el=>el.innerText).join(', '), 
                 businessStage: document.querySelector('input[name="stage"]:checked')?.value || '',
                 name: name, contact: contact, details: document.getElementById('detailText').value 
@@ -379,9 +369,79 @@
             
             fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) }).then(() => {
                 setTimeout(() => {
-                    document.querySelector('.spinner').style.display = 'none';
+                    document.querySelector('#loadingStep .spinner').style.display = 'none';
                     document.getElementById('loadingMsg').innerHTML = "<span style='font-size:4rem; display:block; margin-bottom:16px; color:var(--primary-red);'>✓</span>전문가 매칭 완료!<br><span style='font-size:1.1rem; color:var(--text-secondary); font-weight:500; display:block; margin-top:12px;'>24시간 내에 담당자가 연락드립니다.</span>";
                     setTimeout(() => { closeModal(); location.reload(); }, 3000);
+                }, 2000);
+            });
+        }
+
+        // --- 파트너 합류 신청 (파일 업로드 처리) ---
+        function openPartnerModal() { 
+            document.getElementById('partnerModal').style.display = 'flex'; 
+            setTimeout(() => document.getElementById('partnerModal').classList.add('show'), 10); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closePartnerModal() { 
+            document.getElementById('partnerModal').classList.remove('show'); 
+            setTimeout(() => document.getElementById('partnerModal').style.display = 'none', 400); 
+            document.body.style.overflow = 'auto'; 
+        }
+
+        let uploadedImageBase64 = "";
+        let uploadedImageName = "";
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImageBase64 = e.target.result;
+                    uploadedImageName = file.name;
+                    
+                    document.getElementById('img_preview').src = uploadedImageBase64;
+                    document.getElementById('file_name_display').innerText = file.name;
+                    document.getElementById('img_preview_container').style.display = 'block';
+                    document.getElementById('upload_box').style.borderColor = 'var(--primary-red)';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function submitPartnerForm() {
+            const category = document.getElementById('p_category').value;
+            const name = document.getElementById('p_name').value;
+            const email = document.getElementById('p_email').value;
+
+            if(!category || !name || !email) {
+                return alert('분야, 이름, 이메일은 필수 입력 사항입니다.');
+            }
+            if(!uploadedImageBase64) {
+                return alert('프로필 이미지를 첨부해 주세요.');
+            }
+            if (uploadedImageBase64.length > 5000000) { 
+                return alert('이미지 용량이 너무 큽니다. 더 작은 용량의 사진을 첨부해 주세요.');
+            }
+
+            document.getElementById('partnerStep1').classList.remove('active');
+            document.getElementById('partnerLoadingStep').classList.add('active');
+
+            const payload = {
+                action: 'expert_register',
+                category: category,
+                name: name,
+                email: email,
+                imgBase64: uploadedImageBase64,
+                imgName: uploadedImageName,
+                edu: document.getElementById('p_edu').value,
+                exp: document.getElementById('p_exp').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) }).then(() => {
+                setTimeout(() => {
+                    document.querySelector('#partnerLoadingStep .spinner').style.display = 'none';
+                    document.getElementById('partnerLoadingMsg').innerHTML = "<span style='font-size:4rem; display:block; margin-bottom:16px; color:var(--primary-red);'>✓</span>신청 완료!<br><span style='font-size:1.1rem; color:var(--text-secondary); font-weight:500; display:block; margin-top:12px;'>관리자 승인 후 메인 페이지에 반영됩니다.</span>";
+                    setTimeout(() => { closePartnerModal(); location.reload(); }, 3000);
                 }, 2000);
             });
         }
