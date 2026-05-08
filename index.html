@@ -288,7 +288,16 @@
                         </div>
                     </div>
 
-                    <input type="text" id="p_category" placeholder="전문 분야 (예: 경영 컨설팅, IT 개발 등)">
+                    <select id="p_category" style="width:100%; padding:20px 24px; border:2px solid var(--bg-secondary); background:var(--bg-secondary); border-radius:20px; margin-bottom:20px; font-size:1.05rem; outline:none; font-weight:500; color:var(--text-primary); appearance:none; -webkit-appearance:none; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%2386868B%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>'); background-repeat:no-repeat; background-position:right 24px center; cursor:pointer; transition:all 0.2s ease-out;" onfocus="this.style.borderColor='var(--primary-red)'; this.style.background='var(--bg-page)'; this.style.boxShadow='0 0 0 4px var(--red-light)'" onblur="this.style.borderColor='var(--bg-secondary)'; this.style.background='var(--bg-secondary)'; this.style.boxShadow='none'">
+                        <option value="" disabled selected>전문 분야를 선택해주세요</option>
+                        <option value="경영 컨설팅">경영 컨설팅</option>
+                        <option value="법률 (변호사)">법률 (변호사)</option>
+                        <option value="세무/회계">세무/회계</option>
+                        <option value="지식재산권 (변리사)">지식재산권 (변리사)</option>
+                        <option value="UI/UX 디자인">UI/UX 디자인</option>
+                        <option value="IT 개발">IT 개발</option>
+                        <option value="마케팅 (CRM)">마케팅 (CRM)</option>
+                    </select>
                     <input type="text" id="p_name" placeholder="이름 또는 닉네임">
                     <input type="text" id="p_email" placeholder="알림을 수신할 이메일 주소">
                     <textarea id="p_edu" rows="3" placeholder="주요 경력 및 자격 (줄바꿈으로 구분)"></textarea>
